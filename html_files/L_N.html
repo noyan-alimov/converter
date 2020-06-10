@@ -1,0 +1,384 @@
+<!DOCTYPE html
+	PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head1">
+	<title>
+		Department of Steel & Mines
+	</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+	<meta http-equiv="Page-Enter" content="blendTrans(Duration=0.1)" />
+	<meta http-equiv="Page-Exit" content="blendTrans(Duration=0.1)" />
+	<link href="../styles/style.css" rel="stylesheet" type="text/css" />
+	<link href="../scripts/Calendar/CalendarControl.css" rel="stylesheet" type="text/css" />
+
+	<script language="javascript" type="text/javascript" src="../scripts/loadComponent.js"></script>
+
+	<script src="../../Admin/scripts/print.js" type="text/javascript"></script>
+
+	<script language="javascript" type="text/javascript" src="../../Scripts/Validator.js"></script>
+
+	<script src="../scripts/jquery.js" type="text/javascript"></script>
+
+	<script src="../scripts/Calendar/CalendarControl.js" language="javascript" type="text/javascript"></script>
+
+	<style type="text/css">
+		body {
+			background-image: none;
+		}
+
+		div#AdjResultsDiv {
+			width: 100%;
+			height: 390px;
+			overflow: scroll;
+			position: relative;
+		}
+
+		div#AdjResultsDiv th {
+			top: expression(document.getElementById("AdjResultsDiv").scrollTop-2);
+			left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
+			position: relative;
+			z-index: 20;
+		}
+
+		#rasFrameCtr {
+			position: absolute;
+			left: 0px;
+		}
+
+		#rasFrameCtr a {
+			display: block;
+			float: left;
+			width: 15px;
+			height: 28px;
+			background-color: #62AE15;
+			color: #FFFFFF;
+			font-size: 20px;
+			text-decoration: none;
+			margin-top: 0px;
+		}
+
+		#rasFrameCtr a:hover {
+			background-color: #7ADA1B;
+		}
+	</style>
+	<style type="text/css">
+		.all {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 11px;
+			font-weight: bold;
+			color: #000;
+			text-decoration: none;
+		}
+
+		.all:hover {
+
+			color: #ff0000;
+			text-decoration: none;
+		}
+	</style>
+	<script language="javascript" type="text/javascript">
+		var leftFrame
+        function rasFrame() {
+            if (leftFrame == "close") {
+                parent.document.getElementById('midArea').cols = "200,*"
+                leftFrame = "open"
+                document.getElementById('rasFrameCtrText').innerHTML = "&laquo;"
+            }
+            else {
+                parent.document.getElementById('midArea').cols = "0,*"
+                leftFrame = "close"
+                document.getElementById('rasFrameCtrText').innerHTML = "&raquo;"
+            }
+        }
+		
+		
+	</script>
+
+	<script language="javascript" type="text/javascript">
+		pageHeader = "Truck RegNo wise Report"
+        strFirstLink = "Report"
+        strLastLink = "Reports"
+        
+	</script>
+	<script language="javascript" type="text/javascript">
+		function Text() {
+        document.getElementById("Doc").style.display = 'none';
+        document.getElementById("paging").style.display = 'none';
+        PrintPage();
+        
+    }
+	</script>
+</head>
+
+<body>
+	<form method="post"
+		action="TruckWiseReportDtls.aspx?ID=284&amp;fromdate=28-Jan-2020&amp;todate=09-Jun-2020&amp;truckno=OR09L1707&amp;Sourcetype=0"
+		id="form1">
+		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+		<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AF7C1046" />
+		<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+		<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="A8cuISH9k7F4zE4+D4vN0o1unZn30p+iFBlHiHiyNkYWInK/YoWiQzPUqdEIsPWbv2/Hy1sG230kzK5NfUypdbUY8TutLmrUac33PILX1Xp87swaQVFcsnXC0F1FIOwO5MgpHc4EpoNAF4UtTvhhi4CCaQPzwJIQkmYPyAYpr+UV1Pgx" />
+		<div id="viewTable">
+			<div id="midArea">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td>
+						</td>
+						<td width="15">
+						</td>
+						<td valign="top">
+							<table width="97%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td valign="top">
+										<table width="100%" border="0" cellspacing="0" cellpadding="0">
+											<tr>
+												<td height="25" valign="top">
+												</td>
+											</tr>
+											<tr>
+												<td height="10">
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<table width="100%" border="0" cellspacing="0" cellpadding="0"
+														style="text-align: center">
+														<tr>
+															<td>
+																<div class="title" id="title">
+																	Report For TruckRegNo</div>
+															</td>
+															<td align="right">
+
+															</td>
+														</tr>
+														<tr>
+															<td>
+																<span id="lblTruckno">OR09L1707</span>
+															</td>
+															<td>
+															</td>
+														</tr>
+														<tr>
+															<td colspan="2">
+																&nbsp;</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+											<tr>
+												<td>
+
+													<div id="Doc" align="right" class="mandatory"
+														style="margin-bottom: 2px; margin-top: 5px;">
+
+													</div>
+													<div id="paging" align="right">
+														<a onclick="Text();" id="lbtnPrint" class="all"
+															href="javascript:__doPostBack(&#39;lbtnPrint&#39;,&#39;&#39;)">Print</a>&nbsp;&nbsp;
+
+														&nbsp;&nbsp;
+														<img src="../Images/excel.gif" id="ig" width="16" height="16" align="absmiddle" />
+														<a id="lbtnExcel" class="all"
+															href="javascript:__doPostBack(&#39;lbtnExcel&#39;,&#39;&#39;)">Export
+															to Excel</a>&nbsp;
+														<img src="../Images/all.gif" id="ig1" width="14" height="13" align="absmiddle" />
+
+														<a id="lbtnAll" class="all"
+															href="javascript:__doPostBack(&#39;lbtnAll&#39;,&#39;&#39;)">All</a>
+														&nbsp;&nbsp;<span id="lblPaging">Results <b>1</b> - <b>7</b> Of <b>7</b></span>
+													</div>
+
+													<div class="viewTable">
+														<div>
+															<table cellspacing="0" rules="all" border="1"
+																id="grd_itemlist" width="98%">
+																<tr>
+																	<th scope="col">Sl.No</th>
+																	<th scope="col">Consigner Name</th>
+																	<th scope="col">Truck Regn. No</th>
+																	<th scope="col">Permit No</th>
+																	<th scope="col">Pass No</th>
+																	<th scope="col">Pass Validity </th>
+																	<th scope="col">Consignee Name</th>
+																	<th scope="col">Destination</th>
+																	<th scope="col">Mineral Name</th>
+																	<th scope="col">Stack No</th>
+																	<th scope="col">Minreal Type</th>
+																	<th scope="col">Grade</th>
+																	<th scope="col">Mineral Qty(Tons)</th>
+																	<th scope="col">Transporter Name</th>
+																	<th scope="col">Owner Reg.No</th>
+																	<th scope="col">Issued On</th>
+																</tr>
+																<tr>
+																	<td>
+																		<span id="grd_itemlist_lblslno_0">1</span>
+																	</td>
+																	<td>Indrani Patnaik</td>
+																	<td>OR09L1707</td>
+																	<td>L52002479</td>
+																	<td>L52002479/228</td>
+																	<td>6/3/2020 12:00:00 AM</td>
+																	<td>GLOBAL MARKETING</td>
+																	<td>Shanti Gopal Concast Limited,Jaroli Rly Siding
+																		to CAR By Rail</td>
+																	<td>Iron</td>
+																	<td>127/20</td>
+																	<td>Lumps (CLO)</td>
+																	<td>62.86</td>
+																	<td>10.690</td>
+																	<td>M/S SHRI AANDAL LOGISTICS</td>
+																	<td>TR11499/2019</td>
+																	<td>6/2/2020 2:30:46 AM</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span id="grd_itemlist_lblslno_1">2</span>
+																	</td>
+																	<td>Indrani Patnaik</td>
+																	<td>OR09L1707</td>
+																	<td>L42000788</td>
+																	<td>L42000788/230</td>
+																	<td>4/20/2020 12:00:00 AM</td>
+																	<td>Bhusan Power and Steel Ltd.</td>
+																	<td>Bhusan Power and Steel Ltd.,Nayagarh Rly Siding
+																		to BPSL By Rail</td>
+																	<td>Iron</td>
+																	<td>20/20</td>
+																	<td>Screened Fines</td>
+																	<td>63.42</td>
+																	<td>10.690</td>
+																	<td>M/S SHRI AANDAL LOGISTICS</td>
+																	<td>TR11499/2019</td>
+																	<td>4/19/2020 2:33:46 AM</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span id="grd_itemlist_lblslno_2">3</span>
+																	</td>
+																	<td>Indrani Patnaik</td>
+																	<td>OR09L1707</td>
+																	<td>L32003128</td>
+																	<td>L32003128/254</td>
+																	<td>4/13/2020 12:00:00 AM</td>
+																	<td>Bhusan Power and Steel Ltd.</td>
+																	<td>Bhusan Power and Steel Ltd.,Nayagarh Rly Siding
+																		to BPSL By Rail</td>
+																	<td>Iron</td>
+																	<td>197/20</td>
+																	<td>Screened Fines</td>
+																	<td>62.32</td>
+																	<td>10.610</td>
+																	<td>MS MAA KUANRI LOADING &amp;amp;amp; TRANSPORT
+																	</td>
+																	<td>TR13267/2020</td>
+																	<td>4/12/2020 1:58:51 AM</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span id="grd_itemlist_lblslno_3">4</span>
+																	</td>
+																	<td>Indrani Patnaik</td>
+																	<td>OR09L1707</td>
+																	<td>L42000787</td>
+																	<td>L42000787/278</td>
+																	<td>4/17/2020 12:00:00 AM</td>
+																	<td>Bhusan Power and Steel Ltd.</td>
+																	<td>Bhusan Power and Steel Ltd.,Nayagarh Rly Siding
+																		to BPSL By Rail</td>
+																	<td>Iron</td>
+																	<td>22/20</td>
+																	<td>Screened Fines</td>
+																	<td>63.56</td>
+																	<td>10.690</td>
+																	<td>M/S SHRI AANDAL LOGISTICS</td>
+																	<td>TR11499/2019</td>
+																	<td>4/16/2020 10:42:55 PM</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span id="grd_itemlist_lblslno_4">5</span>
+																	</td>
+																	<td>Indrani Patnaik</td>
+																	<td>OR09L1707</td>
+																	<td>L32003128</td>
+																	<td>L32003128/29</td>
+																	<td>4/12/2020 12:00:00 AM</td>
+																	<td>Bhusan Power and Steel Ltd.</td>
+																	<td>Bhusan Power and Steel Ltd.,Nayagarh Rly Siding
+																		to BPSL By Rail</td>
+																	<td>Iron</td>
+																	<td>197/20</td>
+																	<td>Screened Fines</td>
+																	<td>62.32</td>
+																	<td>10.470</td>
+																	<td>MS MAA KUANRI LOADING &amp;amp;amp; TRANSPORT
+																	</td>
+																	<td>TR13267/2020</td>
+																	<td>4/11/2020 11:19:50 PM</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span id="grd_itemlist_lblslno_5">6</span>
+																	</td>
+																	<td>Indrani Patnaik</td>
+																	<td>OR09L1707</td>
+																	<td>L52002479</td>
+																	<td>L52002479/344</td>
+																	<td>6/3/2020 12:00:00 AM</td>
+																	<td>GLOBAL MARKETING</td>
+																	<td>Shanti Gopal Concast Limited,Jaroli Rly Siding
+																		to CAR By Rail</td>
+																	<td>Iron</td>
+																	<td>127/20</td>
+																	<td>Lumps (CLO)</td>
+																	<td>62.86</td>
+																	<td>10.690</td>
+																	<td>M/S SHRI AANDAL LOGISTICS</td>
+																	<td>TR11499/2019</td>
+																	<td>6/2/2020 4:49:53 AM</td>
+																</tr>
+																<tr>
+																	<td>
+																		<span id="grd_itemlist_lblslno_6">7</span>
+																	</td>
+																	<td>Indrani Patnaik</td>
+																	<td>OR09L1707</td>
+																	<td>L32003129</td>
+																	<td>L32003129/70</td>
+																	<td>4/13/2020 12:00:00 AM</td>
+																	<td>Bhusan Power and Steel Ltd.</td>
+																	<td>Bhusan Power and Steel Ltd.,Nayagarh Rly Siding
+																		to BPSL By Rail</td>
+																	<td>Iron</td>
+																	<td>198/20</td>
+																	<td>Screened Fines</td>
+																	<td>62.74</td>
+																	<td>10.620</td>
+																	<td>M/S SHRI AANDAL LOGISTICS</td>
+																	<td>TR11499/2019</td>
+																	<td>4/12/2020 4:51:17 AM</td>
+																</tr>
+															</table>
+														</div>
+													</div>
+
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</form>
+</body>
+
+</html>
