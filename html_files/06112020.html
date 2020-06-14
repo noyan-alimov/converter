@@ -1,0 +1,288 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+	Department of Steel & Mines
+</title><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /><meta http-equiv="Page-Enter" content="blendTrans(Duration=0.1)" /><meta http-equiv="Page-Exit" content="blendTrans(Duration=0.1)" /><link href="../styles/style.css" rel="stylesheet" type="text/css" /><link href="../scripts/Calendar/CalendarControl.css" rel="stylesheet" type="text/css" />
+
+    <script language="javascript" type="text/javascript" src="../scripts/loadComponent.js"></script>
+
+    <script src="../../Admin/scripts/print.js" type="text/javascript"></script>
+
+    <script language="javascript" type="text/javascript" src="../../Scripts/Validator.js"></script>
+
+    <script src="../scripts/jquery.js" type="text/javascript"></script>
+
+    <script src="../scripts/Calendar/CalendarControl.js" language="javascript" type="text/javascript"></script>
+
+    <style type="text/css">
+        body
+        {
+            background-image: none;
+        }
+        div#AdjResultsDiv
+        {
+            width: 100%;
+            height: 390px;
+            overflow: scroll;
+            position: relative;
+        }
+        div#AdjResultsDiv th
+        {
+            top: expression(document.getElementById("AdjResultsDiv").scrollTop-2);
+            left: expression(parentNode.parentNode.parentNode.parentNode.scrollLeft);
+            position: relative;
+            z-index: 20;
+        }
+        #rasFrameCtr
+        {
+            position: absolute;
+            left: 0px;
+        }
+        #rasFrameCtr a
+        {
+            display: block;
+            float: left;
+            width: 15px;
+            height: 28px;
+            background-color: #62AE15;
+            color: #FFFFFF;
+            font-size: 20px;
+            text-decoration: none;
+            margin-top: 0px;
+        }
+        #rasFrameCtr a:hover
+        {
+            background-color: #7ADA1B;
+        }
+    </style>
+ <style type="text/css">
+     .all {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000;
+	text-decoration: none;
+}
+.all:hover {
+	
+	color: #ff0000;
+	text-decoration: none;
+}
+     </style>
+    <script language="javascript" type="text/javascript">
+
+        var leftFrame
+        function rasFrame() {
+            if (leftFrame == "close") {
+                parent.document.getElementById('midArea').cols = "200,*"
+                leftFrame = "open"
+                document.getElementById('rasFrameCtrText').innerHTML = "&laquo;"
+            }
+            else {
+                parent.document.getElementById('midArea').cols = "0,*"
+                leftFrame = "close"
+                document.getElementById('rasFrameCtrText').innerHTML = "&raquo;"
+            }
+        }
+		
+		
+    </script>
+
+    <script language="javascript" type="text/javascript">
+        pageHeader = "Truck RegNo wise Report"
+        strFirstLink = "Report"
+        strLastLink = "Reports"
+        
+    </script>
+<script language="javascript" type="text/javascript">
+    function Text() {
+        document.getElementById("Doc").style.display = 'none';
+        document.getElementById("paging").style.display = 'none';
+        PrintPage();
+        
+    }
+</script>
+</head>
+<body>
+    <form method="post" action="TruckWiseReportDtls.aspx?ID=271&amp;fromdate=01-Jan-2020&amp;todate=10-Jun-2020&amp;truckno=OR09L1707&amp;Sourcetype=0" id="form1">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="AF7C1046" />
+<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="t45aylYh5LtMHK7vf5fB68h8N+vNiY+VehZHAk5GyVJEcYI6XnwLeAzW5e96MUO3A2d59ZXscaT5M62ITu5hA7I6sY5dI3Shhn4+UL8ltQX1KAe6G5bLbfF+9704RA7/Of9Aoakhlna17nPWmOVxQmfnJNp/caJxNktabw6hb/MxMm4ANAHGsWpV5rWjW9inPMXc7g==" />
+    <div id="viewTable">
+        <div id="midArea">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                    </td>
+                    <td width="15">
+                    </td>
+                    <td valign="top">
+                        <table width="97%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td valign="top">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td height="25" valign="top">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td height="10">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="text-align: center">
+                                                    <tr>
+                                                        <td>
+                                                            <div class="title" id="title">
+                                                                Report For TruckRegNo</div>
+                                                        </td>
+                                                        <td align="right">
+                                                            
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <span id="lblTruckno">OR09L1707</span>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                            &nbsp;</td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                
+                                                <div id="Doc" align="right" class="mandatory" style="margin-bottom: 2px; margin-top: 5px;">
+                                                   
+                                                </div>
+                                                <div id="paging" align="right">
+                                                 <a onclick="Text();" id="lbtnPrint" class="all" href="javascript:__doPostBack(&#39;lbtnPrint&#39;,&#39;&#39;)">Print</a>&nbsp;&nbsp;
+                                                    
+                                                    &nbsp;&nbsp;
+                                                    <img src="../Images/excel.gif" id="ig" width="16" height="16" align="absmiddle" />
+                                                    <a id="lbtnExcel" class="all" href="javascript:__doPostBack(&#39;lbtnExcel&#39;,&#39;&#39;)">Export to Excel</a>&nbsp;
+                                                    <img src="../Images/all.gif" id="ig1" width="14" height="13" align="absmiddle" />
+
+                                                    <a id="lbtnAll" class="all" href="javascript:__doPostBack(&#39;lbtnAll&#39;,&#39;&#39;)">All</a>
+                                                    &nbsp;&nbsp;<span id="lblPaging">Results <b>1</b> - <b>20</b> Of <b>28</b></span></div>
+                                               
+                                                    <div class="viewTable">
+                                                        <div>
+	<table cellspacing="0" rules="all" border="1" id="grd_itemlist" width="98%">
+		<tr>
+			<th scope="col">Sl.No</th><th scope="col">Consigner Name</th><th scope="col">Truck Regn. No</th><th scope="col">Permit No</th><th scope="col">Pass No</th><th scope="col">Pass Validity </th><th scope="col">Consignee Name</th><th scope="col">Destination</th><th scope="col">Mineral Name</th><th scope="col">Stack No</th><th scope="col">Minreal Type</th><th scope="col">Grade</th><th scope="col">Mineral Qty(Tons)</th><th scope="col">Transporter Name</th><th scope="col">Owner Reg.No</th><th scope="col">Issued On</th>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_0">1</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42001897</td><td>L42001897/109</td><td>5/18/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>RUNGTA MINES LIMITED,Jaroli to Paradip Port(PPTG),Plot No. 3A and 7B allotted by Paradip Port trust,</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.84</td><td>10.640</td><td>M/S JAI BAJRANG TRANSPORT</td><td>TR12257/2019</td><td>5/17/2020 2:40:16 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_1">2</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000747</td><td>L42000747/128</td><td>4/20/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Jaroli to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.56</td><td>10.600</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>4/19/2020 10:48:51 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_2">3</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42001159</td><td>L42001159/147</td><td>4/27/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>RUNGTA MINES LIMITED,Banspani to Paradip Port(PPTG),Plot No. 3A and 7B allotted by Paradip Port trus</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.56</td><td>10.720</td><td>KHANI KHYATI GRASTA GRAMYA COMMITTEE</td><td>TR3317/2015</td><td>4/26/2020 8:01:06 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_3">4</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000761</td><td>L42000761/198</td><td>5/7/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>RUNGTA MINES LIMITED,Nayagarh to Paradip Port(PPTG),Plot No. 3A and 7B allotted by Paradip Port trus</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.42</td><td>10.490</td><td>MS MAA KUANRI LOADING &amp;amp; TRANSPORT</td><td>TR13267/2020</td><td>5/6/2020 8:58:46 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_4">5</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42001160</td><td>L42001160/224</td><td>4/28/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>RUNGTA MINES LIMITED,Banspani to Paradip Port(PPTG),Plot No. 3A and 7B allotted by Paradip Port trus</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.56</td><td>10.640</td><td>KHANI KHYATI GRASTA GRAMYA COMMITTEE</td><td>TR3317/2015</td><td>4/27/2020 1:54:23 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_5">6</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000775</td><td>L42000775/238</td><td>5/1/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Nayagarh to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.42</td><td>10.420</td><td>MS MAA KUANRI LOADING &amp;amp; TRANSPORT</td><td>TR13267/2020</td><td>4/30/2020 7:06:13 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_6">7</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42001181</td><td>L42001181/243</td><td>6/10/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Jaroli to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.42</td><td>10.550</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>6/9/2020 6:28:09 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_7">8</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42001182</td><td>L42001182/245</td><td>6/11/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Jaroli to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.42</td><td>10.560</td><td>M/S JAI BAJRANG TRANSPORT</td><td>TR12257/2019</td><td>6/10/2020 1:21:30 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_8">9</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000777</td><td>L42000777/247</td><td>5/9/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td> RUNGTA MINES  LTD.,Nayagarh to Gopalpur Port(IREL),Gopalpur Port Area,Plot No-HP-1(A)/1, Chhatrapur</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.42</td><td>10.490</td><td>MS MAA KUANRI LOADING &amp;amp; TRANSPORT</td><td>TR13267/2020</td><td>5/8/2020 3:15:51 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_9">10</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000170</td><td>L42000170/276</td><td>4/16/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Jaroli to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.45</td><td>10.640</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>4/15/2020 8:25:51 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_10">11</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42002011</td><td>L42002011/29</td><td>5/18/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Banspani to Gangavaram (MGPV) Port, Within Gangavaram Port Area, Visakhapatanam, ANDHRA PRADESH</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.70</td><td>10.580</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>5/17/2020 10:47:02 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_11">12</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000767</td><td>L42000767/305</td><td>4/18/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Nayagarh to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.42</td><td>10.630</td><td>MS MAA KUANRI LOADING &amp;amp;amp; TRANSPORT</td><td>TR13267/2020</td><td>4/17/2020 11:06:03 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_12">13</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000772</td><td>L42000772/311</td><td>4/26/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Nayagarh to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.42</td><td>9.020</td><td>MS MAA KUANRI LOADING &amp;amp; TRANSPORT</td><td>TR13267/2020</td><td>4/25/2020 10:54:52 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_13">14</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000504</td><td>L42000504/312</td><td>5/10/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>RUNGTA MINES LIMITED,Jaroli to Paradip Port(PPTG),Plot No. 3A and 7B allotted by Paradip Port trust,</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.56</td><td>10.540</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>5/9/2020 2:28:49 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_14">15</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000747</td><td>L42000747/318</td><td>4/21/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Jaroli to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.56</td><td>10.690</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>4/20/2020 1:19:27 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_15">16</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000506</td><td>L42000506/326</td><td>5/11/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>RUNGTA MINES LIMITED,Jaroli to Paradip Port(PPTG),Plot No. 3A and 7B allotted by Paradip Port trust,</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.73</td><td>10.540</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>5/10/2020 9:02:41 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_16">17</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000456</td><td>L42000456/328</td><td>5/12/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>RUNGTA MINES LIMITED,Jaroli to Paradip Port(PPTG),Plot No. 3A and 7B allotted by Paradip Port trust,</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.73</td><td>10.380</td><td>M/S JAI BAJRANG TRANSPORT</td><td>TR12257/2019</td><td>5/11/2020 3:46:19 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_17">18</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000751</td><td>L42000751/336</td><td>4/29/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Jaroli to Haldia(HDCB),Haldia Port,Plate No.-LAMS190420, LAMS180414, LAMS180509, Haldia, WB</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.56</td><td>10.530</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>4/28/2020 8:05:02 PM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_18">19</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42000759</td><td>L42000759/338</td><td>5/4/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>RUNGTA MINES LIMITED,Nayagarh to Paradip Port(PPTG),Plot No. 3A and 7B allotted by Paradip Port trus</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.42</td><td>10.600</td><td>MS MAA KUANRI LOADING &amp;amp; TRANSPORT</td><td>TR13267/2020</td><td>5/3/2020 2:41:41 AM</td>
+		</tr><tr>
+			<td>
+                                                                        <span id="grd_itemlist_lblslno_19">20</span>
+                                                                    </td><td>Rungta Mines  Ltd.</td><td>OR09L1707</td><td>L42002008</td><td>L42002008/351</td><td>5/8/2020 12:00:00 AM</td><td>Rungta Mines  Ltd.</td><td>Banspani to Gangavaram (MGPV) Port, Within Gangavaram Port Area, Visakhapatanam, ANDHRA PRADESH</td><td>Iron</td><td>NA</td><td>Screened Fines</td><td>56.84</td><td>10.480</td><td>M/s. Jai Jagannath Transport</td><td>TR3569/2015</td><td>5/7/2020 8:27:28 AM</td>
+		</tr><tr class="paging">
+			<td colspan="16"><table>
+				<tr>
+					<td><span>1</span></td><td><a href="javascript:__doPostBack(&#39;grd_itemlist&#39;,&#39;Page$2&#39;)">2</a></td>
+				</tr>
+			</table></td>
+		</tr>
+	</table>
+</div>
+                                                    </div>
+                                                
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

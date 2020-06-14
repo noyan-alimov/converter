@@ -1,44 +1,43 @@
 import json
 from bs4 import BeautifulSoup
-f = open("./html_files/L_N.html")
-
-soup = BeautifulSoup(f, features="html.parser")
-
-table = soup.find(id='grd_itemlist')
-rows = table.findChildren('tr', recursive=False)
-head_row = rows[0]
-
-headers = []
-
-for header in head_row.stripped_strings:
-    headers.append(header)
-
-# Body rows
 
 
-def create_dict_row(row_number):
-    row = rows[row_number]
+def convertHtmlfile(name):
+    f = open("./html_files/{}.html".format(name))
+    soup = BeautifulSoup(f, features="html.parser")
 
-    row_list = []
+    table = soup.find(id='grd_itemlist')
+    rows = table.findChildren('tr', recursive=False)
+    head_row = rows[0]
 
-    for text in row.stripped_strings:
-        row_list.append(text)
+    headers = []
 
-    data = dict(zip(headers, row_list))
+    for header in head_row.stripped_strings:
+        headers.append(header)
 
-    return data
+    # Body rows
 
+    def create_dict_row(row_number):
+        row = rows[row_number]
 
-steel_mines_data = []
+        row_list = []
 
-for i in range(len(rows)):
-    j = i + 1
-    try:
-        dict_data = create_dict_row(j)
-        steel_mines_data.append(dict_data)
-    except IndexError:
-        break
+        for text in row.stripped_strings:
+            row_list.append(text)
 
+        data = dict(zip(headers, row_list))
 
-with open('./json_files/L_N.json', 'w') as fp:
-    json.dump(steel_mines_data, fp)
+        return data
+
+    steel_mines_data = []
+
+    for i in range(len(rows)):
+        j = i + 1
+        try:
+            dict_data = create_dict_row(j)
+            steel_mines_data.append(dict_data)
+        except IndexError:
+            break
+
+    with open('./json_files/{}.json'.format(name), 'w') as fp:
+        json.dump(steel_mines_data, fp)
