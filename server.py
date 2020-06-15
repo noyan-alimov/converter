@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
 from converter import convertHtmlfile
+from add_to_db import addToDatabase
 
 app = Flask(__name__)
 
@@ -19,6 +20,7 @@ def home():
     if form.validate_on_submit():
         name = form.name.data
         convertHtmlfile(name)
+        addToDatabase(name)
 
         return redirect(url_for('home'))
 

@@ -13,7 +13,8 @@ def convertHtmlfile(name):
     headers = []
 
     for header in head_row.stripped_strings:
-        headers.append(header)
+        title = header.replace('.', ' ')
+        headers.append(title)
 
     # Body rows
 
