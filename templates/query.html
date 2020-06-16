@@ -1,0 +1,18 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="jumbotron">
+  <h1>Query Data by Truck Regn No</h1>
+  <form method="POST">
+    {{form.hidden_tag()}} {{form.col_name.label}} {{form.col_name()}}
+    {{form.filter_data.label}} {{form.filter_data()}} {{form.submit()}}
+  </form>
+  <ul>
+    {% for doc in docs %}
+
+    <li>{{ doc }}</li>
+
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
